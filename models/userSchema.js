@@ -3,6 +3,9 @@ let mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
 	_id: {
 		type: String,
+	},
+    username: {
+		type: String,
 		required: [true, 'Please enter in your name'],
         min: 3,
 		max: 100,
