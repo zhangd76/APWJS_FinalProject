@@ -10,7 +10,7 @@ app.get('/', function(req, res){
 })
 
 app.get('/login', function(req, res){
-    console.log("Accessing login page");
+    console.log("Accessing login page");    
     res.render('login');
 })
 
