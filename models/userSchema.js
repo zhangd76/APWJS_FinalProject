@@ -22,7 +22,12 @@ const userSchema = new mongoose.Schema({
 		max: 100,
         unique: true
 	},
-	
+	stories_read:{
+        type: [String]
+    },
+    endings_achieved:{
+        type: [String]
+    }
     },
 {collections: 'users'}
 );
