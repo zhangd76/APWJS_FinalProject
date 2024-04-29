@@ -190,6 +190,13 @@ input[type=text], input[type=password], input[type=email]{
   margin-top: 200px;
 }
 
+.game-nav ul{
+  display: flex;
+  align-items:flex-end;
+  justify-content: center;
+  text-decoration: none;
+}
+
 .game-nav li{
   display: inline;
   padding: 50px;
