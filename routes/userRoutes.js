@@ -4,10 +4,9 @@ let userModel = require('../models/userSchema');
 
 router.get('/:userID', async (req, res)=> {
     try{
-	    let user=await userModel.findOne({_id: req.params.userID});
-	    let current;
+	    let user=await userModel.findOne({username: req.params.userID});
 
-	    
+    }
     catch (err) {
 	res.status(500).render('error', {message: err.message})
     }
