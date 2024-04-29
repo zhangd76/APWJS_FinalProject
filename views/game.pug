@@ -1,0 +1,45 @@
+html
+  head
+    style 
+      include styles.css
+      
+title 
+
+main
+  h1.title.main-title.container Choose Your Own Adventure
+
+body.container.game-body
+  nav.game-nav
+    ul
+        li.forest
+          img(src="imgs/forest.jpg", id="forest")
+        li.desert
+          img(src="imgs/desert.jpg", id="desert")
+        li
+          img.cave(src="imgs/cave.jpg", id="cave")        
+    ul
+
+    a.game-exit(href="/home") Back to Home
+
+
+  script.
+    var body = document.body;
+    var title = document.querySelector(".title");
+
+    var forestElement = document.getElementById("forest");
+    forestElement.addEventListener("mouseover", function() {
+        body.style.backgroundImage = "url('imgs/forest.jpg')";
+        title.style.color = "grey";
+    });
+
+    var desertElement = document.getElementById("desert");
+    desertElement.addEventListener("mouseover", function() {
+        body.style.backgroundImage = "url('imgs/desert.jpg')";
+        title.style.color = "red";
+    });
+
+    var caveElement = document.getElementById("cave");
+    caveElement.addEventListener("mouseover", function() {
+        body.style.backgroundImage = "url('imgs/cave.jpg')";
+        title.style.color = "green";
+    });

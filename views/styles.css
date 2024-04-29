@@ -40,14 +40,20 @@ html, body{
     padding: 0 1.5em;
 }
 
+nav{
+  padding: 15px 15px 15px 15px;
+  text-decoration: none;
+}
+
+
 .main-nav {
     text-align: center;
     font-size: 1.1em;
-    font-weight: darker;
+    font-weight: darker;   
 
 }
 
-.nav li{
+.main-nav li{
     display: inline;
     background-color:rgb(25, 148, 76);
     border-style: solid;
@@ -58,8 +64,7 @@ html, body{
 
 }
 
-.nav a{
-    padding: 15px 32px;
+.main-nav a{
     text-align: center;
     color: rgb(255, 255, 255);
     font-family: monospace;
@@ -67,15 +72,15 @@ html, body{
     text-decoration: none;
 }
 
-.nav li:first-child{
+.main-nav li:first-child{
     margin-right: 8%;
 }
 
-.nav li:hover{
+.main-nav li:hover{
     background-color: rgba(136, 136, 136, 0.7);
 }
 
-.nav ul{
+.main-nav ul{
     display: flex;
     max-height: 97vh;
     height: 50vh;
@@ -141,3 +146,83 @@ input[type=text], input[type=password], input[type=email]{
     margin: 4px 2px;
     cursor: pointer;
   }
+
+  .home-nav{
+    color: rgb(255, 255, 255);
+    font-family:monospace;
+    font-size: 45px;
+    text-decoration: none;
+    text-shadow: 3px 3px 15px rgb(255, 0, 0);
+  }
+
+  .home-nav li{
+    padding-top: 1em;
+    text-decoration: none;
+    list-style-type: none;
+  }
+
+  .home-nav a{
+    text-decoration: none;
+    all:unset;
+  }
+
+  .home-nav a:hover{
+    cursor: pointer;
+    font-size: 55px;
+    font-weight: bolder;
+  }
+
+  .home-background{
+    background-image: url(imgs/moon.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    min-width: 100%;
+  }
+
+  .home-title{
+    color: rgb(190, 91, 91);
+    font-family: ShadowsIntoLight;
+    text-shadow: 7px 7px rgb(0, 0, 0);
+}
+
+.game-nav{
+  margin-top: 200px;
+}
+
+.game-nav li{
+  display: inline;
+  padding: 50px;
+}
+
+.game-nav img{
+  width: 300px;
+  cursor: pointer;
+  border-color: black;
+  border-width: 20px;
+  border-radius: 50em;
+}
+
+.game-nav img:hover{
+  width: 310px;
+}
+
+.game-body{
+  background-color: rgb(139, 139, 139);
+  background-size: cover;
+  min-height: 100%;
+  min-width: 100%;
+  transition: ease-in-out;
+}
+
+.game-exit{
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-family: monospace;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+.game-exit:hover{
+  color: rgba(255, 255, 255, 0.7);
+}
