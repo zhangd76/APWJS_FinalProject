@@ -10,7 +10,7 @@ app.get('/', function(req, res){
 })
 
 app.get('/login', function(req, res){
-    console.log("Accessing login page");    
+    console.log("Accessing login page");
     res.render('login');
 })
 
@@ -19,6 +19,17 @@ app.get('/register', function(req, res){
     res.render('register');
 })
 
+app.get('/home', function(req, res){
+    console.log("Accessing home page");
+    res.render('home');
+})
+
+app.get('/game', function(req, res){
+    console.log("Accessing game page");
+    res.render('game');
+})
+
 app.listen(1234, () => {
     console.log("Server is running on 1234");
 })
+
