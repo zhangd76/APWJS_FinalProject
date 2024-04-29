@@ -1,4 +1,4 @@
-This is the final project for Jacob Levy's Advances Programming Workshop
+This is the final project for Jacob Levy's Advanced Programming Workshop
 
 Choose Your Own Adventure
 
