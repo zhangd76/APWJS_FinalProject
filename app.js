@@ -3,7 +3,7 @@ const app = express();
 var http = require("http");
 var qString = require("querystring");
 let dbManager = require('./dbManager');
-var ObjectID = require('mongodb').ObjectId;
+//var ObjectID = require('mongodb').ObjectId;
 let mongoose = require('mongoose');
 mongoose.set('bufferCommands', false);
 
@@ -11,7 +11,7 @@ let bp = require('body-parser');
 let session = require('express-session');
 let crypto = require('crypto');
 const userCol = require("./models/userSchema");
-//copy the function to here
+
 function genHash(input){
     return Buffer.from(crypto.createHash('sha256').update(input).digest('base32')).toString('hex').toUpperCase();
 }
@@ -64,12 +64,10 @@ app.get('/', function(req, res){
 })
 
 app.get('/login', function(req, res){
-    if (req.session.user){
-        res.redirect('/home');
-    }else{
+
         res.render('login');
         console.log("Accessing login page");
-    }
+    
 })
 
 app.get('/register', function(req, res){
@@ -78,8 +76,14 @@ app.get('/register', function(req, res){
 })
 
 app.get('/home', function(req, res){
-    console.log("Accessing home page");
-    res.render('home');
+    if (!req.session.user){
+        res.redirect('/login')
+    }
+    else {
+        console.log("Accessing home page");
+        res.render('home');
+    }
+    
 })
 
 app.get('/game', function(req, res){

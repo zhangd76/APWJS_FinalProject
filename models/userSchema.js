@@ -31,8 +31,7 @@ const userSchema = new mongoose.Schema({
         type: [String]
     }
     },
-{collections: 'users'}
 );
-const userModel=mongoose.model('User', userSchema)
+const userCol=mongoose.model('User', userSchema)
 
 module.exports = userCol;

@@ -1,9 +1,10 @@
 const MongoClient = require('mongodb').MongoClient;
-var getID = require('mongodb').ObjectID();
+var getID = require('mongodb');
 var url = "mongodb://127.0.0.1:27017/";
-
-let mongoClient = MongoClient(url,{ useUnifiedTopology: true });
+let database = {};
+let mongoClient = new MongoClient(url,{ useUnifiedTopology: true });
 let myDB; 
+
 
 var connect = async function(dbName){
     try{
