@@ -77,7 +77,8 @@ app.get('/register', function(req, res){
 
 app.get('/home', function(req, res){
     if (!req.session.user){
-        res.redirect('/login')
+        console.log('unable to access');
+        res.redirect('/login');
     }
     else {
         console.log("Accessing home page");
@@ -93,27 +94,29 @@ app.get('/game', function(req, res){
 
 var postData;
 
-app.post('/signup', express.urlencoded({extended:false}), async (req, res, next)=>{
+app.post('/register', express.urlencoded({extended:false}), async (req, res, next)=>{
     console.log(req.body.user); 
     if (req.body.uname.split(/[;:,-\s ]+/).length > 1) {
-	res.render('signup', {msg: "Username must be one word"})
+	res.render('register', {msg: "Username must be one word"})
     }
-	let hashPass = genHash(req.body.pword)
-    let newUser = docifyUser({username: req.body.uname, password: hashPass, email: req.body.email})
+	let hashPass = req.body.pword
+    let newUser = docifyUser({_id: req.body.uname, username: req.body.uname, password: hashPass, email: req.body.email})
     await newUser.save()
 	res.redirect('login')
 });
 
 app.post('/login', express.urlencoded({extended:false}), async (req, res, next)=>{
-	let untrusted= {user: req.body.uname, password: genHash(req.body.pword)};
+	let untrusted= {user: req.body.uname, password: req.body.pword};
 	console.log(untrusted.password)
 	try{
-		let result = await userCol.findOne({username: req.body.uname});
+		let result = await userCol.findOne({_id: req.body.uname});
 		if (untrusted.password.toString().toUpperCase()==result.password.toString().toUpperCase()){
 			let trusted={username: result.username.toString()};
-            req.session.username = trusted;
+            req.session.user = trusted;
+            console.log('got it right');
 			res.redirect('/home');
 		} else{
+            console.log('wrong password');
 			res.redirect('/login');
 		}
 	} catch (err){
