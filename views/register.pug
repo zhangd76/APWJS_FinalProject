@@ -9,7 +9,7 @@ main
   h1.title.container.form-title Create Your Account
 
 body.form-background
-  form.form-container(action='/login') 
+  form.form-container(method="POST", action='/login') 
     .input
       label.label(for="Username") Username
       input#uname(type="text", name="uname")
