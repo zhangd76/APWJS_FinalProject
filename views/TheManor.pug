@@ -6,9 +6,9 @@ html
 title 
 
 main
-body 
-    h1= story.story_name
-    p= story.scenario
+body.TheManor-background
+  h1.adventure-title.container= story.story_name
+    p.adventure-title.container= story.scenario
     form(action="/TheManor", method="POST")
         each choice in story.choices
             button(type="submit", name="choice", value=choice)= `Go to Page ${choice}`

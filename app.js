@@ -3,7 +3,6 @@ const app = express();
 var http = require("http");
 var qString = require("querystring");
 let dbManager = require('./dbManager');
-//var ObjectID = require('mongodb').ObjectId;
 let mongoose = require('mongoose');
 mongoose.set('bufferCommands', false);
 
@@ -58,7 +57,7 @@ app.use(session({
 	resave: false
 }));
 
-
+//app gets
 
 app.get('/', function(req, res){
     res.render('index');
@@ -185,6 +184,8 @@ app.get('/TheManor', async function(req, res){
         }
     }
 })
+
+// app posts
 var postData;
 
 app.post('/TheEnchantedForest', express.urlencoded({ extended: false }), async (req, res) => {

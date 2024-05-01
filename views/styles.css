@@ -285,3 +285,38 @@ input[type=text], input[type=password], input[type=email]{
 .bounce {
   animation: bounce 1s infinite;
 }
+
+.TGE-background{
+  background-image: url(imgs/ge3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
+  min-width: 100%;
+  color: white;
+}
+
+.TheEnchantedForest-background{
+  background-image: url(imgs/forest.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
+  min-width: 100%;
+  color:white;
+}
+
+.TheManor-background{
+  background-image: url(imgs/manor.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
+  min-width: 100%;
+  color: black;
+}
+
+.adeventure-title{
+  text-align: center;
+  font-size: 30px;
+  margin-top: 20em;
+  color: rgb(255, 255, 255);
+}
+
