@@ -11,6 +11,7 @@ let bp = require('body-parser');
 let session = require('express-session');
 let crypto = require('crypto');
 const userCol = require("./models/userSchema");
+const Scenario = require('./models/scenarioSchema'); 
 
 function genHash(input){
     return Buffer.from(crypto.createHash('sha256').update(input).digest('base32')).toString('hex').toUpperCase();
@@ -87,12 +88,103 @@ app.get('/home', function(req, res){
     
 })
 
-app.get('/game', function(req, res){
+app.get('/game', function(req, res){if (!req.session.user){
+    console.log('unable to access');
+    res.redirect('/login');
+}
+else {
     console.log("Accessing game page");
-    res.render('game');
+    res.render('game');}
 })
 
+app.get('/TheEnchantedForest', async function(req, res) {
+    if (!req.session.user) {
+        res.redirect('/login');
+    } else {
+        try {
+            const storyName = "The Enchanted Forest";
+            const currentPage = 1;
+
+            console.log(`Querying for story: ${storyName}, page: ${currentPage}`);
+
+            const scenario = await Scenario.findOne({ story_name: storyName, story_page: currentPage });
+
+            console.log('Story found:', scenario);
+
+            if (!scenario) {
+                res.status(404).send("Story page not found");
+            } else {
+                res.render('TheEnchantedForest', { 
+                    trusted: req.session.user,
+                    story: scenario
+                });
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("Internal Server Error");
+        }
+    }
+});
+
+
+
+app.get('/TheGalacticEngima', function(req, res){
+    if (!req.session.user){
+        res.redirect('/login');
+    }
+    else{
+
+    	res.render('TGE', {trusted: req.session.user});
+	}
+})
+
+app.get('/TheManor', function(req, res){
+    if (!req.session.user){
+        res.redirect('/login');
+    }
+    else{
+
+    	res.render('TheManor', {trusted: req.session.user});
+	}
+})
 var postData;
+
+app.post('/TheEnchantedForest', express.urlencoded({ extended: false }), async (req, res) => {
+    const nextPage = parseInt(req.body.choice);
+
+    try {
+        const storyName = "The Enchanted Forest";
+        // Fetch story from MongoDB for the chosen page
+        const scenario = await Scenario.findOne({ story_name: storyName, story_page: nextPage });
+
+        if (!scenario) {
+            // Handle if story page not found
+            res.status(404).send("Story page not found");
+        } else {
+            // Update session to remember the user's progress
+            req.session.storyProgress = {
+                story_name: storyName,
+                current_page: nextPage
+            };
+
+            res.render('TheEnchantedForest', { 
+                trusted: req.session.user,
+                story: scenario
+            });
+        }
+    } catch (error) {
+        // Handle database error
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+app.post('/TheGalacticEnigma', function(req, res){
+
+})
+app.post('/TheManor', function(req, res){
+
+})
 
 app.post('/register', express.urlencoded({extended:false}), async (req, res, next)=>{
     console.log(req.body.user); 

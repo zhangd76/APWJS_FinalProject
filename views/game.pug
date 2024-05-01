@@ -12,11 +12,14 @@ body.container.game-body
   nav.game-nav
     ul
         li.forest
-          a: img(src="imgs/forest.jpg", id="The Enchanted Forest", href="/TheEnchantedForest")
+        a(href="/TheEnchantedForest")          
+           img(src="imgs/forest.jpg", id="The Enchanted Forest")
         li.desert
-          a: img(src="imgs/desert.jpg", id="The Galactic Enigma", href="/TheGalacticEngima")
+        a(href="/TheGalacticEngima")
+           img(src="imgs/desert.jpg", id="The Galactic Enigma")
         li.cave
-          img(src="imgs/cave.jpg", id="The Manor", href="/TheManor")        
+        a(href="/TheManor")
+            img(src="imgs/cave.jpg", id="The Manor")        
     ul
 
     a.game-exit(href="/home") Back to Home
@@ -26,19 +29,19 @@ body.container.game-body
     var body = document.body;
     var title = document.querySelector(".title");
 
-    var forestElement = document.getElementById("forest");
+    var forestElement = document.getElementById("The Enchanted Forest");
     forestElement.addEventListener("mouseover", function() {
         body.style.backgroundImage = "url('imgs/forest.jpg')";
         title.style.color = "grey";
     });
 
-    var desertElement = document.getElementById("desert");
+    var desertElement = document.getElementById("The Galactic Enigma");
     desertElement.addEventListener("mouseover", function() {
         body.style.backgroundImage = "url('imgs/desert.jpg')";
         title.style.color = "red";
     });
 
-    var caveElement = document.getElementById("cave");
+    var caveElement = document.getElementById("The Manor");
     caveElement.addEventListener("mouseover", function() {
         body.style.backgroundImage = "url('imgs/cave.jpg')";
         title.style.color = "green";
