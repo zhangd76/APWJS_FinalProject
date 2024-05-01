@@ -6,4 +6,10 @@ html
 title 
 
 main
-  h1.title.main-title.container Choose Your Own Adventure
+body 
+    h1= story.story_name
+    p= story.scenario
+    form(action="/TheGalacticEnigma", method="POST")
+        each choice in story.choices
+            button(type="submit", name="choice", value=choice)= `Go to Page ${choice}`
+    a.adventure-exit(href="/home") Back to Home

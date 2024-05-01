@@ -233,3 +233,11 @@ input[type=text], input[type=password], input[type=email]{
 .game-exit:hover{
   color: rgba(255, 255, 255, 0.7);
 }
+
+.adventure-exit{
+  text-align: center;
+  color: rgb(255, 0, 0);
+  font-family: monospace;
+  font-size: 30px;
+  text-decoration: none;
+}

@@ -12,3 +12,4 @@ body
     form(action="/TheEnchantedForest", method="POST")
         each choice in story.choices
             button(type="submit", name="choice", value=choice)= `Go to Page ${choice}`
+    a.adventure-exit(href="/home") Back to Home
