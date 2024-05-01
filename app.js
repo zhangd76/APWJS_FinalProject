@@ -36,18 +36,6 @@ function docifyUser(params){
     return doc;
 }
 
-function moveOn(postData){
-    let proceed = true;
-    postParams = qString.parse(postData);
-    //handle empty data
-    for (property in postParams){
-	if (postParams[property].toString().trim() == ''){
-	    proceed = false;
-	}
-    }
-
-    return proceed;
-}
 
 var postParams;
 
