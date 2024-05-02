@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 var http = require("http");
 var qString = require("querystring");
-let dbManager = require('./dbManager');
+
 let mongoose = require('mongoose');
 mongoose.set('bufferCommands', false);
 
